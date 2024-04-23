@@ -5,7 +5,7 @@ import clear_icon from "../Assets/clear.png";
 import cloud_icon from "../Assets/cloud.png";
 
 function SearchComponent() {
-    let api_key = "af5ab7e27b93af99ad971d7fd7f8f7f6";
+    let my_key = `${process.env.REACT_APP_API_KEY}`;
 
     const [wicon,setWicon] = useState(cloud_icon);
     console.log(wicon)
@@ -16,7 +16,7 @@ function SearchComponent() {
         if(element[0].value==="") {
             return 0;
         }
-        let url = `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=${api_key}`
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=${my_key}`
 
         let response = await fetch(url)
         let data = await response.json();
